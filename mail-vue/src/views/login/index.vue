@@ -647,6 +647,9 @@ function submitRegister() {
 
 .container {
   background: v-bind(loginOpacity);
+  /* 登录卡片毛玻璃：透过云朵 / 自定义背景图 */
+  backdrop-filter: blur(20px) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(20px) saturate(var(--glass-saturate));
   padding-left: 40px;
   padding-right: 40px;
   display: flex;

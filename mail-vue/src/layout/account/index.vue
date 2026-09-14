@@ -523,7 +523,7 @@ path[fill="#ffdda1"] {
 .account-box {
 
   border-right: 1px solid var(--el-border-color) !important;
-  background-color: var(--el-bg-color);
+  background-color: var(--glass-bg);
   height: 100%;
   overflow: hidden;
 
@@ -582,7 +582,7 @@ path[fill="#ffdda1"] {
   }
 
   .item {
-    background-color: var(--el-bg-color);
+    background-color: var(--glass-bg);
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 11px;
@@ -627,7 +627,8 @@ path[fill="#ffdda1"] {
   }
 
   .item-choose {
-    background: var(--choose-account-background);
+    /* 需覆盖全局 .el-card 毛玻璃底色的 !important，保证选中态可见 */
+    background: var(--choose-account-background) !important;
   }
 }
 

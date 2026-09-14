@@ -34,7 +34,7 @@ body {
 }
 
 html, body {
-    background: var(--el-bg-color);
+    background: var(--app-bg-base);
 }
 
 ul, ol {
@@ -118,8 +118,8 @@ button, input, select, textarea {
     --light-ill: #F5F7FA;
     --light-border: #E4E7ED;
     --header-actions-border: inset 0 -1px 0 0 var(--el-border-color-lighter);
-    --aside-backgound: #191A23;
-    --aside-menu-active-background: #27282D;
+    --aside-backgound: rgba(25, 26, 35, 0.68);
+    --aside-menu-active-background: rgba(255, 255, 255, 0.14);
     --loadding-background: rgba(255, 255, 255, 0.8);
     --dark-border: #CDD0D6;
     --base-fill: #F0F2F5;
@@ -143,6 +143,20 @@ button, input, select, textarea {
     --vt-y: 50%;
     --vt-duration: 520ms;
     --vt-easing: ease-out;
+
+    /* ===== 毛玻璃（glassmorphism） ===== */
+    --glass-blur: 16px;
+    --glass-saturate: 180%;
+    --glass-bg: rgba(255, 255, 255, 0.54);
+    --glass-bg-strong: rgba(255, 255, 255, 0.70);
+    --glass-border: rgba(255, 255, 255, 0.55);
+    --glass-shadow: 0 8px 28px rgba(15, 23, 42, 0.10);
+
+    /* ===== 底层渐变光晕背景 ===== */
+    --app-bg-base: #eef3fb;
+    --app-glow-blue: rgba(24, 144, 255, 0.22);
+    --app-glow-violet: rgba(146, 118, 255, 0.20);
+    --app-glow-teal: rgba(56, 189, 190, 0.18);
 }
 
 .dark {
@@ -150,7 +164,7 @@ button, input, select, textarea {
     --settings-page-background: var(--extra-light-fill);
     --light-ill: #262727;
     --light-border: #414243;
-    --aside-backgound: #141414;
+    --aside-backgound: rgba(18, 19, 23, 0.64);
     --aside-menu-active-background: rgba(255, 255, 255, 0.08);
     --header-actions-border: inset 0 -1px 0 0 var(--el-border-color-lighter);
     --loadding-background: rgba(0, 0, 0, 0.3);
@@ -171,10 +185,68 @@ button, input, select, textarea {
     --secondary-text-color: #A3A6AD;
     --message-block-color: rgba(30, 30, 30, 0.2);
     --el-border-color: #414243 !important;
+
+    /* ===== 毛玻璃（暗色） ===== */
+    --glass-bg: rgba(28, 30, 36, 0.55);
+    --glass-bg-strong: rgba(28, 30, 36, 0.70);
+    --glass-border: rgba(255, 255, 255, 0.10);
+    --glass-shadow: 0 8px 28px rgba(0, 0, 0, 0.42);
+
+    /* ===== 底层渐变光晕背景（暗色） ===== */
+    --app-bg-base: #0e1014;
+    --app-glow-blue: rgba(24, 144, 255, 0.24);
+    --app-glow-violet: rgba(140, 110, 255, 0.20);
+    --app-glow-teal: rgba(40, 160, 165, 0.16);
+}
+
+/* 浮层内部容器交给 .el-popper 提供玻璃底色，避免叠加出不透明面板 */
+.el-picker-panel,
+.el-select-dropdown,
+.el-dropdown-menu,
+.el-cascader-panel {
+    background-color: transparent !important;
 }
 
 .el-input {
     --el-input-text-color: var(--el-text-color-primary) !important;
+}
+
+/* ===== 毛玻璃：下拉 / 弹出层 / 对话框 / 抽屉 / 卡片 ===== */
+.el-popper {
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+
+.el-popper.is-light,
+.el-popper.is-pure {
+    background: var(--glass-bg-strong) !important;
+    border-color: var(--glass-border) !important;
+}
+
+.el-popper.is-light .el-popper__arrow::before {
+    background: var(--glass-bg-strong) !important;
+    border-color: var(--glass-border) !important;
+}
+
+.el-dialog,
+.el-message-box,
+.el-drawer,
+.el-notification,
+.el-card {
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+
+.el-dialog,
+.el-message-box,
+.el-drawer,
+.el-notification {
+    background: var(--glass-bg-strong) !important;
+}
+
+.el-card {
+    background: var(--glass-bg) !important;
+    border-color: var(--glass-border) !important;
 }
 
 /* 视图过渡，基于径向剪裁 */

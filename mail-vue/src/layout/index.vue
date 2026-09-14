@@ -71,13 +71,19 @@ onBeforeUnmount(() => {
     left: 0;
     z-index: 101;
     height: 100%;
-    background: var(--el-bg-color);
   }
 }
 
 .el-aside {
   width: auto;
   transition: all 100ms ease;
+}
+
+/* 侧边栏毛玻璃：半透明底色 + 背景模糊，透出下层渐变光晕 */
+.aside {
+  background: var(--aside-backgound);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
 }
 
 .layout {
@@ -87,11 +93,18 @@ onBeforeUnmount(() => {
   top: 0;
   left: 0;
   overflow: hidden;
+  /* 底层渐变光晕背景：毛玻璃面板透过它获得质感 */
+  background-color: var(--app-bg-base);
+  background-image:
+    radial-gradient(42% 42% at 10% 6%, var(--app-glow-blue), transparent 68%),
+    radial-gradient(38% 38% at 90% 10%, var(--app-glow-violet), transparent 68%),
+    radial-gradient(46% 46% at 82% 94%, var(--app-glow-teal), transparent 70%),
+    radial-gradient(34% 34% at 18% 90%, var(--app-glow-violet), transparent 70%);
 }
 
 .main-container {
   min-height: 100%;
-  background: var(--el-bg-color);
+  background: transparent;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -101,8 +114,10 @@ onBeforeUnmount(() => {
 }
 
 .el-header {
-  background: var(--el-bg-color);
-  border-bottom: solid 1px var(--el-border-color);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-bottom: solid 1px var(--glass-border);
   padding: 0 0 0 0;
 }
 

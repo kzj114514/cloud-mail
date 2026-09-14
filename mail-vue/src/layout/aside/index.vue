@@ -85,7 +85,6 @@ const route = useRoute();
 .title {
   margin: 15px 10px;
   height: 45px;
-  border-radius: 6px;
   display: flex;
   position: relative;
   font-size: 16px;
@@ -94,8 +93,6 @@ const route = useRoute();
   justify-content: center;
   gap: 5px;
   color: #ffffff;
-  background: linear-gradient(135deg, #1890ff, #3a80dd);
-  transition: all 0.3s ease;
   max-width: 240px;
   padding: 0 10px;
   > div {
@@ -151,16 +148,17 @@ const route = useRoute();
 }
 
 
+/* 侧栏毛玻璃的底色与模糊统一由 layout 的 .aside 提供，内部保持透明，避免层层叠加变浑 */
 :deep(.el-scrollbar__wrap--hidden-default ) {
-  background: var(--aside-backgound) !important;
+  background: transparent !important;
 }
 
 :deep(.el-menu-item) {
-  background: var(--aside-backgound);
+  background: transparent;
 }
 
 :deep(.el-menu) {
-  background: var(--aside-backgound);
+  background: transparent;
 }
 
 .el-menu {
@@ -169,7 +167,7 @@ const route = useRoute();
 }
 
 :deep(.el-divider__text) {
-  background: var(--aside-backgound);
+  background: transparent;
   color: #FFFFFF;
 }
 

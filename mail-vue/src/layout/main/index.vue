@@ -160,8 +160,9 @@ const handleResize = () => {
 }
 
 
+/* 内容区改为半透明玻璃，透出底层渐变光晕 */
 .main-view {
-  background: var(--el-bg-color);
+  background: var(--glass-bg);
 }
 
 
